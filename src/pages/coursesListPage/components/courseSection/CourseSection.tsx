@@ -1,3 +1,5 @@
+import Hls from 'hls.js'
+import { useRef, useEffect } from 'react'
 import HoverVideoPlayer from 'react-hover-video-player'
 import { Link } from 'react-router-dom'
 
@@ -13,39 +15,65 @@ type Props = Pick<CourseDTO, 'id' | 'title' | 'previewImageLink' | 'lessonsCount
   videoSrc?: string
 }
 
-export const CourseSection = ({ id, title, previewImageLink, lessonsCount, skills, videoSrc, rating }: Props) => (
-  <Link to={RoutesManager.view.root.getURL({ id })} className="course">
-    <div>
-      <div className="video">
-        <HoverVideoPlayer
-          videoId={videoSrc}
-          videoSrc={videoSrc}
-          pausedOverlay={
-            <img
-              src={previewImageLink + '/cover.webp'}
-              alt={title}
-              style={{
-                width: '360px',
-                height: '260px',
-                objectFit: 'cover',
-              }}
-            />
-          }
-        />
-      </div>
-      <div className="footer">
-        <div className="rating">
-          <p>Rating: {rating}</p>
-          <img src={Star} alt="star" />
-        </div>
-        <p>Lessons: {lessonsCount}</p>
-      </div>
-    </div>
-    <div className="descriptionWrapper">
+export const CourseSection = ({
+  id,
+  title,
+  previewImageLink,
+  lessonsCount,
+  skills,
+  videoSrc,
+  rating,
+}: Props) => {
+  const videoRef = useRef<HTMLVideoElement | null>(null)
+
+  useEffect(() => {
+    if (videoRef.current) {
+      const videoSrc = videoRef.current.id
+      if (Hls.isSupported()) {
+        const hls = new Hls()
+        hls.loadSource(videoSrc)
+        hls.attachMedia(videoRef.current)
+      } else if (videoRef.current.canPlayType('application/vnd.apple.mpegurl')) {
+        videoRef.current.src = videoSrc
+      }
+    }
+  }, [videoRef])
+
+  return (
+    <Link to={RoutesManager.view.root.getURL({ id })} className="course">
       <div>
-        <h4>{title}</h4>
-        {skills && <SkillsSection skills={skills} />}
+        <div className="video">
+          <HoverVideoPlayer
+            videoRef={videoRef}
+            videoId={videoSrc}
+            videoSrc={videoSrc}
+            pausedOverlay={
+              <img
+                src={`${previewImageLink}/cover.webp`}
+                alt={title}
+                style={{
+                  width: '360px',
+                  height: '260px',
+                  objectFit: 'cover',
+                }}
+              />
+            }
+          />
+        </div>
+        <div className="footer">
+          <div className="rating">
+            <p>Rating: {rating}</p>
+            <img src={Star} alt="star" />
+          </div>
+          <p>Lessons: {lessonsCount}</p>
+        </div>
       </div>
-    </div>
-  </Link>
-)
+      <div className="descriptionWrapper">
+        <div>
+          <h4>{title}</h4>
+          {skills && <SkillsSection skills={skills} />}
+        </div>
+      </div>
+    </Link>
+  )
+}

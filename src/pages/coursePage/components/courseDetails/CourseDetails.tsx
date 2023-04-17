@@ -34,8 +34,18 @@ export const CourseDetails = ({ course }: Props) => {
           handleClick={handleTabChange}
           text="Description"
         />
-        <TabButton id="details" className={isDetailsTab ? 'active' : ''} handleClick={handleTabChange} text="Details" />
-        <TabButton id="tags" className={isTagsTab ? 'active' : ''} handleClick={handleTabChange} text="Tags" />
+        <TabButton
+          id="details"
+          className={isDetailsTab ? 'active' : ''}
+          handleClick={handleTabChange}
+          text="Details"
+        />
+        <TabButton
+          id="tags"
+          className={isTagsTab ? 'active' : ''}
+          handleClick={handleTabChange}
+          text="Tags"
+        />
       </div>
 
       {isDescriptionTab && (

@@ -1,5 +1,6 @@
+import classNames from 'classnames'
 import Hls from 'hls.js'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 import './CoursePage.styled.scss'
@@ -11,6 +12,7 @@ import { Loader } from '../../ui-base/loader/Loader'
 import lock from '../../ui-base/svg/Lock.svg'
 
 export const CoursePage = () => {
+  const videoRef = useRef<HTMLVideoElement | null>(null)
   const { id } = useParams<{ id: string }>()
   const [currentLesson, setCurrentLesson] = useState<Lesson | undefined>(undefined)
   const { data: course, isLoading } = usePreviewCourse({
@@ -26,9 +28,8 @@ export const CoursePage = () => {
       const videoMeta = JSON.parse(window.localStorage.getItem(course.id)!)
       if (videoMeta) {
         setCurrentLesson(course?.lessons.find(lesson => lesson.order === videoMeta.currentLesson))
-        const video = document.getElementById('videoMeta') as HTMLMediaElement
-        if (video) {
-          video.currentTime = videoMeta.currentTime || 0
+        if (videoRef.current) {
+          videoRef.current.currentTime = videoMeta.currentTime || 0
         }
       } else {
         setCurrentLesson(course?.lessons.find(lesson => lesson.order === 1))
@@ -51,23 +52,26 @@ export const CoursePage = () => {
   useEffect(() => {
     if (!isLoading && currentLesson) {
       const videoSrc = currentLesson.link!
-      const video = document.getElementById('videoMeta') as HTMLMediaElement
-
-      if (video) {
-        video.addEventListener('timeupdate', () => updateVideoMeta(video))
+      if (videoRef.current) {
+        videoRef.current.addEventListener('timeupdate', () =>
+          updateVideoMeta(videoRef.current as HTMLMediaElement),
+        )
 
         if (Hls.isSupported()) {
           const hls = new Hls()
           hls.loadSource(videoSrc)
-          hls.attachMedia(video)
-        } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-          video.src = videoSrc
+          hls.attachMedia(videoRef.current)
+        } else if (videoRef.current.canPlayType('application/vnd.apple.mpegurl')) {
+          videoRef.current.src = videoSrc
         }
 
-        return () => video.removeEventListener('timeupdate', () => updateVideoMeta(video))
+        return () =>
+          videoRef.current?.removeEventListener('timeupdate', () =>
+            updateVideoMeta(videoRef.current as HTMLMediaElement),
+          )
       }
     }
-  }, [isLoading, currentLesson, updateVideoMeta])
+  }, [isLoading, currentLesson, updateVideoMeta, videoRef])
 
   const handleLessonClick = (order: number) => {
     setCurrentLesson(course?.lessons.find(lesson => lesson.order === order))
@@ -76,38 +80,45 @@ export const CoursePage = () => {
   if (isLoading) {
     return <Loader />
   }
-  
+
   return (
-    <div className="coursePage">
-      {course && (
-        <>
-          <h3 className="title">{course.title}</h3>
-          <div className="lessonsWrapper">
-            <div className="videoWrapper">
-              <video id="videoMeta" src={currentLesson?.link} controls />
-              <h4>{currentLesson?.order + '. ' + currentLesson?.title}</h4>
-            </div>
-            <div>
-              <h4>Lessons In This Course:</h4>
-              <div className="lessonsList">
-                {sortedLessons?.map(lesson => (
-                  <div
-                    className={`lessonSection ${lesson.order === currentLesson?.order ? 'active' : ''} ${
-                      lesson.status === 'locked' ? 'disabled' : ''
-                    }`}
-                    key={lesson.order}
-                    onClick={() => handleLessonClick(lesson.order)}
-                  >
-                    {lesson.status === 'locked' && <img src={lock} alt="lock" />}
-                    <h3>{lesson.order + '. ' + lesson.title}</h3>
+    <>
+      {isLoading && <Loader />}
+
+      {!isLoading && (
+        <div className="coursePage">
+          {course && (
+            <>
+              <h3 className="title">{course.title}</h3>
+              <div className="lessonsWrapper">
+                <div className="videoWrapper">
+                  <video ref={videoRef} id="videoMeta" src={currentLesson?.link} controls />
+                  <h4>{`${currentLesson?.order}. ${currentLesson?.title}`}</h4>
+                </div>
+                <div>
+                  <h4>Lessons In This Course:</h4>
+                  <div className="lessonsList">
+                    {sortedLessons?.map(lesson => (
+                      <div
+                        className={classNames('lessonSection', {
+                          active: lesson.order === currentLesson?.order,
+                          disabled: lesson.status === 'locked',
+                        })}
+                        key={lesson.order}
+                        onClick={() => handleLessonClick(lesson.order)}
+                      >
+                        {lesson.status === 'locked' && <img src={lock} alt="lock" />}
+                        <h3>{`${lesson.order}. ${lesson.title}`}</h3>
+                      </div>
+                    ))}
                   </div>
-                ))}
+                </div>
               </div>
-            </div>
-          </div>
-          <CourseDetails course={course} />
-        </>
+              <CourseDetails course={course} />
+            </>
+          )}
+        </div>
       )}
-    </div>
+    </>
   )
 }

@@ -10,7 +10,9 @@ export const CoursesListPage = () => (
       <div className="title">
         <h3>Start to success</h3>
         <h1>Let&apos;s find the right course for you</h1>
-        <h4>Invest in your future with our education platform. Your path to success starts here.</h4>
+        <h4>
+          Invest in your future with our education platform. Your path to success starts here.
+        </h4>
       </div>
       <div className="imageWrapper">
         <img src={homeImage} alt="HomeImage" />

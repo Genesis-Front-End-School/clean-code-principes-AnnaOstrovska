@@ -24,7 +24,10 @@ export const App = () => (
         <Layout>
           <ScrollToTop>
             <Routes>
-              <Route path="*" element={<Navigate to={RoutesManager.home.root.getURL()} replace />} />
+              <Route
+                path="*"
+                element={<Navigate to={RoutesManager.home.root.getURL()} replace />}
+              />
               {routes.map(({ component, path }) => (
                 <Route path={path} element={component} key={path} />
               ))}

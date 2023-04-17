@@ -5,4 +5,5 @@ interface Params {
   courseId: string
 }
 
-export const fetchPreviewCourse = ({ courseId }: Params) => wiseyStudy.get<Course>(`/core/preview-courses/${courseId}`)
+export const fetchPreviewCourse = ({ courseId }: Params) =>
+  wiseyStudy.get<Course>(`/core/preview-courses/${courseId}`)
