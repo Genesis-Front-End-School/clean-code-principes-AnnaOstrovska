@@ -77,10 +77,6 @@ export const CoursePage = () => {
     setCurrentLesson(course?.lessons.find(lesson => lesson.order === order))
   }
 
-  if (isLoading) {
-    return <Loader />
-  }
-
   return (
     <>
       {isLoading && <Loader />}
