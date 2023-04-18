@@ -17,6 +17,7 @@ export const Header = () => {
   return (
     <header className="container">
       <Logo />
+      
       <div className="buttonsWrapper">
         <button
           className={classNames({

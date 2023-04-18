@@ -1,5 +1,7 @@
 # Wisey Study
 
+DEMO: https://wisey-study.pages.dev/home
+
 This project was created using such technologies:
 - React
 - TypeScript

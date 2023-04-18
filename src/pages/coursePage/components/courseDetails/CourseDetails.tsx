@@ -2,15 +2,11 @@ import React, { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 
 import './CourseDetails.styled.scss'
-import { Course } from '../../../../types/courses/courses'
 import { SkillsSection } from '../../../../ui-shared/skillsSection/SkillsSection'
 import { TabButton } from './tabButton/TabButton'
+import { ICourseDetailsProps } from './models'
 
-interface Props {
-  course: Course
-}
-
-export const CourseDetails = ({ course }: Props) => {
+export const CourseDetails = ({ course }: ICourseDetailsProps) => {
   const navigate = useNavigate()
   const { hash } = useLocation()
   const [currentTab, setCurrentTab] = useState(hash || '#description')
@@ -58,6 +54,7 @@ export const CourseDetails = ({ course }: Props) => {
           )}
         </div>
       )}
+
       {isDetailsTab && (
         <div className="tab">
           <div className="block">
@@ -70,6 +67,7 @@ export const CourseDetails = ({ course }: Props) => {
           </div>
         </div>
       )}
+
       {isTagsTab && (
         <div className="tab">
           <p>{course.tags.join(', ').toUpperCase()}</p>

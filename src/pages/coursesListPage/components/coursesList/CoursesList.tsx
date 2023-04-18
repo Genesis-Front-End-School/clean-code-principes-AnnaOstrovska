@@ -44,6 +44,7 @@ export const CoursesList = () => {
                 rating={course.rating}
               />
             ))}
+            
           <ReactPaginate
             containerClassName="pagination"
             breakLabel="..."

@@ -1,10 +1,7 @@
 import './SkillsSection.styled.scss'
+import { ISkillsSectionProps } from './models'
 
-interface Props {
-  skills: string[]
-}
-
-export const SkillsSection = ({ skills }: Props) => (
+export const SkillsSection = ({ skills }: ISkillsSectionProps) => (
   <>
     <h5>Skills:</h5>
     <ul>

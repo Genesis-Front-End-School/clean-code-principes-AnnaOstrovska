@@ -14,10 +14,12 @@ export const CoursesListPage = () => (
           Invest in your future with our education platform. Your path to success starts here.
         </h4>
       </div>
+
       <div className="imageWrapper">
         <img src={homeImage} alt="HomeImage" />
       </div>
     </div>
+    
     <div className="coursesWrapper">
       <h3>
         Preview our most popular courses <img src={arrowDown} alt="arrowDown" />

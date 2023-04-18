@@ -8,12 +8,7 @@ import './CourseSection.styled.scss'
 import { RoutesManager } from '../../../../routesManager'
 import Star from '../../../../ui-base/svg/Star.svg'
 import { SkillsSection } from '../../../../ui-shared/skillsSection/SkillsSection'
-import { CourseDTO } from '../../../../types/courses/courses'
-
-type Props = Pick<CourseDTO, 'id' | 'title' | 'previewImageLink' | 'lessonsCount' | 'rating'> & {
-  skills?: string[]
-  videoSrc?: string
-}
+import { ICourseSectionProps } from '../models'
 
 export const CourseSection = ({
   id,
@@ -23,7 +18,7 @@ export const CourseSection = ({
   skills,
   videoSrc,
   rating,
-}: Props) => {
+}: ICourseSectionProps) => {
   const videoRef = useRef<HTMLVideoElement | null>(null)
 
   useEffect(() => {
@@ -60,6 +55,7 @@ export const CourseSection = ({
             }
           />
         </div>
+
         <div className="footer">
           <div className="rating">
             <p>Rating: {rating}</p>
@@ -68,6 +64,7 @@ export const CourseSection = ({
           <p>Lessons: {lessonsCount}</p>
         </div>
       </div>
+
       <div className="descriptionWrapper">
         <div>
           <h4>{title}</h4>

@@ -86,11 +86,13 @@ export const CoursePage = () => {
           {course && (
             <>
               <h3 className="title">{course.title}</h3>
+
               <div className="lessonsWrapper">
                 <div className="videoWrapper">
                   <video ref={videoRef} id="videoMeta" src={currentLesson?.link} controls />
                   <h4>{`${currentLesson?.order}. ${currentLesson?.title}`}</h4>
                 </div>
+
                 <div>
                   <h4>Lessons In This Course:</h4>
                   <div className="lessonsList">
@@ -110,6 +112,7 @@ export const CoursePage = () => {
                   </div>
                 </div>
               </div>
+              
               <CourseDetails course={course} />
             </>
           )}
