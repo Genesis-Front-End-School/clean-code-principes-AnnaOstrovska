@@ -90,11 +90,11 @@ export const CoursePage = () => {
               <div className="lessonsWrapper">
                 <div className="videoWrapper">
                   <video ref={videoRef} id="videoMeta" src={currentLesson?.link} controls />
-                  <h4>{`${currentLesson?.order}. ${currentLesson?.title}`}</h4>
+                  <h4 className='subtitle'>{`${currentLesson?.order}. ${currentLesson?.title}`}</h4>
                 </div>
 
                 <div>
-                  <h4>Lessons In This Course:</h4>
+                  <h4 className='subtitle'>Lessons In This Course:</h4>
                   <div className="lessonsList">
                     {sortedLessons?.map(lesson => (
                       <div

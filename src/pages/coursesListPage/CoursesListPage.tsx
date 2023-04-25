@@ -9,8 +9,8 @@ export const CoursesListPage = () => (
     <div className="topWrapper">
       <div className="title">
         <h3>Start to success</h3>
-        <h1>Let&apos;s find the right course for you</h1>
-        <h4>
+        <h1 className='bigTitle'>Let&apos;s find the right course for you</h1>
+        <h4 className='smallTitle'>
           Invest in your future with our education platform. Your path to success starts here.
         </h4>
       </div>

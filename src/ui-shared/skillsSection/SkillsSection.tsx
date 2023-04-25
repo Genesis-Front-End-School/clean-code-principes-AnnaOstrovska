@@ -3,10 +3,10 @@ import { ISkillsSectionProps } from './models'
 
 export const SkillsSection = ({ skills }: ISkillsSectionProps) => (
   <>
-    <h5>Skills:</h5>
+    <h5 className='skillsTitle'>Skills:</h5>
     <ul>
       {skills.map((skill, index) => (
-        <li key={index}>{skill}</li>
+        <li className='skillsItem' key={index}>{skill}</li>
       ))}
     </ul>
   </>

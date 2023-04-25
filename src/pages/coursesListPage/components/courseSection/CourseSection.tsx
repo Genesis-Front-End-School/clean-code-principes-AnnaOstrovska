@@ -58,8 +58,8 @@ export const CourseSection = ({
 
         <div className="footer">
           <div className="rating">
-            <p>Rating: {rating}</p>
-            <img src={Star} alt="star" />
+            <p className='ratingTitle'>Rating: {rating}</p>
+            <img className='star' src={Star} alt="star" />
           </div>
           <p>Lessons: {lessonsCount}</p>
         </div>
@@ -67,7 +67,7 @@ export const CourseSection = ({
 
       <div className="descriptionWrapper">
         <div>
-          <h4>{title}</h4>
+          <h4 className='courseTitle'>{title}</h4>
           {skills && <SkillsSection skills={skills} />}
         </div>
       </div>
