@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import ReactPaginate from 'react-paginate'
 
 import './CoursesList.styled.scss'
@@ -10,7 +10,7 @@ import { CourseSection } from '../courseSection/CourseSection'
 export const CoursesList = () => {
   const { data, isLoading } = usePreviewCourses()
   const [startItemOffset, setStartItemOffset] = useState(0)
-  const sortedCourses = data?.courses.sort((a, b) => b.rating - a.rating)
+  const sortedCourses = useMemo(() => data?.courses.sort((a, b) => b.rating - a.rating), [data])
   const numberOfItems = 10
   const endItemOffset = startItemOffset + numberOfItems
   const paginatedCoursesList = sortedCourses?.slice(startItemOffset, endItemOffset)

@@ -1,4 +1,3 @@
-import Hls from 'hls.js'
 import { useRef, useEffect } from 'react'
 import HoverVideoPlayer from 'react-hover-video-player'
 import { Link } from 'react-router-dom'
@@ -9,6 +8,7 @@ import { RoutesManager } from '../../../../routesManager'
 import Star from '../../../../ui-base/svg/Star.svg'
 import { SkillsSection } from '../../../../ui-shared/skillsSection/SkillsSection'
 import { ICourseSectionProps } from '../models'
+import { attachHlsMedia } from '../../../../utils/attachHlsMedia'
 
 export const CourseSection = ({
   id,
@@ -22,16 +22,7 @@ export const CourseSection = ({
   const videoRef = useRef<HTMLVideoElement | null>(null)
 
   useEffect(() => {
-    if (videoRef.current) {
-      const videoSrc = videoRef.current.id
-      if (Hls.isSupported()) {
-        const hls = new Hls()
-        hls.loadSource(videoSrc)
-        hls.attachMedia(videoRef.current)
-      } else if (videoRef.current.canPlayType('application/vnd.apple.mpegurl')) {
-        videoRef.current.src = videoSrc
-      }
-    }
+    attachHlsMedia(videoRef.current)
   }, [videoRef])
 
   return (
