@@ -34,7 +34,7 @@ export interface Lesson extends VideoPreview {
   id: string
   meta: Meta | null
   order: number
-  status: string
+  status: 'locked' | 'unlocked'
   title: string
   type: string
 }

@@ -52,11 +52,10 @@ export const CoursePage = () => {
                       <CourseLesson
                         key={id}
                         active={order === currentLesson?.order}
-                        disabled={status === 'locked'}
                         order={order}
                         handleLessonClick={handleLessonClick}
-                        status={status}
                         title={title}
+                        isLocked={status === 'locked'}
                       />
                     ))}
                   </div>

@@ -9,8 +9,8 @@ export interface ITabButtonProps {
 
 export type ICourseDetailsProps = Pick<Course, 'description' | 'launchDate' | 'rating' | 'tags' | 'meta'>
 
-export type ILessonProps = Pick<Lesson, 'order' | 'status' | 'title'> & {
+export type ILessonProps = Pick<Lesson, 'order' | 'title'> & {
   active: boolean
-  disabled: boolean
+  isLocked: boolean
   handleLessonClick: (order: Lesson['order']) => void
 }
