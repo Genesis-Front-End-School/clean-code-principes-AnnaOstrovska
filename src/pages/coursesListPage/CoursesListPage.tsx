@@ -19,7 +19,7 @@ export const CoursesListPage = () => (
         <img src={homeImage} alt="HomeImage" />
       </div>
     </div>
-    
+
     <div className="coursesWrapper">
       <h3>
         Preview our most popular courses <img src={arrowDown} alt="arrowDown" />
