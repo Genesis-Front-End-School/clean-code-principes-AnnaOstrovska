@@ -7,6 +7,7 @@
     margin-top: 80px;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 50%));
+
     @media (max-width: 800px) {
       grid-template-columns: 100%;
     }
@@ -42,4 +43,3 @@
     padding-top: 80px;
   }
 }
-

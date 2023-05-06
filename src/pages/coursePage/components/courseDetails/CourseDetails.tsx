@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import './CourseDetails.styled.scss'
 import { SkillsSection } from '../../../../ui-shared/skillsSection/SkillsSection'
 import { TabButton } from './tabButton/TabButton'
-import { ICourseDetailsProps } from './models'
+import { ICourseDetailsProps } from '../../models'
 
 export const CourseDetails = ({ course }: ICourseDetailsProps) => {
   const navigate = useNavigate()
