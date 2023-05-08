@@ -65,7 +65,7 @@ export const CoursePage = () => {
               <CourseDetails
                 description={course.description}
                 tags={course.tags}
-                skills={course.meta.skills}
+                skills={course.meta?.skills}
                 launchDate={course.launchDate}
                 rating={course.rating}
               />
