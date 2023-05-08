@@ -6,7 +6,7 @@ import { SkillsSection } from '../../../../ui-shared/skillsSection/SkillsSection
 import { TabButton } from './tabButton/TabButton'
 import { ICourseDetailsProps } from '../../models'
 
-export const CourseDetails = ({ description, launchDate, rating, tags, meta }: ICourseDetailsProps) => {
+export const CourseDetails = ({ description, launchDate, rating, tags, skills }: ICourseDetailsProps) => {
   const navigate = useNavigate()
   const { hash } = useLocation()
   const [currentTab, setCurrentTab] = useState(hash || '#description')
@@ -47,9 +47,9 @@ export const CourseDetails = ({ description, launchDate, rating, tags, meta }: I
       {isDescriptionTab && (
         <div className="tab">
           <p>{description}</p>
-          {meta.skills && (
+          {skills && (
             <div className="skills">
-              <SkillsSection skills={meta.skills} />
+              <SkillsSection skills={skills} />
             </div>
           )}
         </div>

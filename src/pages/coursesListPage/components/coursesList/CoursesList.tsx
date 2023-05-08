@@ -30,7 +30,7 @@ export const CoursesList = () => {
       )}
 
       {!isLoading && (
-        <div className="listWrapper">
+        <div className="listWrapper" data-testid="courses-list">
           {paginatedCoursesList?.length &&
             paginatedCoursesList.map(({ id, title, previewImageLink, lessonsCount, meta, rating }) => (
               <CourseSection

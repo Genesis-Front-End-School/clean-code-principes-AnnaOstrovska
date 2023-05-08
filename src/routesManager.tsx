@@ -1,7 +1,7 @@
 import { ReactElement } from 'react'
 
 import { CoursePage } from './pages/coursePage/CoursePage'
-import { CoursesListPage } from './pages/coursesListPage/CoursesListPage'
+import CoursesListPage from './pages/coursesListPage/CoursesListPage'
 
 interface AppRoute {
   component: ReactElement

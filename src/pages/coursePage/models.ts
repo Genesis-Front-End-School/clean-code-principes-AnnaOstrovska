@@ -1,4 +1,4 @@
-import { Course, Lesson } from '../../types/courses/courses'
+import { Course, Lesson, Meta } from '../../types/courses/courses'
 
 export interface ITabButtonProps {
   text: string
@@ -7,7 +7,7 @@ export interface ITabButtonProps {
   handleClick: (e: React.MouseEvent) => void
 }
 
-export type ICourseDetailsProps = Pick<Course, 'description' | 'launchDate' | 'rating' | 'tags' | 'meta'>
+export type ICourseDetailsProps = Pick<Course, 'description' | 'launchDate' | 'rating' | 'tags'> & Pick<Meta, 'skills'>
 
 export type ILessonProps = Pick<Lesson, 'order' | 'title'> & {
   active: boolean
