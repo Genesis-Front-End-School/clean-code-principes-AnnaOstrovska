@@ -9,6 +9,7 @@ import { Loader } from '../../ui-base/loader/Loader'
 import { useCurrentLesson } from '../../hooks/useCurrentLesson'
 import { useUpdateVideoMeta } from '../../hooks/useUpdateVideoMeta'
 import { CourseLesson } from './components/courseLesson/CourseLesson'
+import { Lesson } from '../../types/courses/courses'
 
 export const CoursePage = () => {
   const videoRef = useRef<HTMLVideoElement | null>(null)
@@ -24,7 +25,7 @@ export const CoursePage = () => {
 
   useUpdateVideoMeta(course?.id, currentLesson?.order, isLoading, videoRef.current)
 
-  const handleLessonClick = (order: number) => {
+  const handleLessonClick = (order: Lesson['order']) => {
     setCurrentLesson(course?.lessons.find(lesson => lesson.order === order))
   }
 
@@ -47,21 +48,27 @@ export const CoursePage = () => {
                 <div>
                   <h4 className='subtitle'>Lessons In This Course:</h4>
                   <div className="lessonsList">
-                    {sortedLessons?.map(lesson => (
+                    {sortedLessons?.map(({ order, status, title, id }) => (
                       <CourseLesson
-                        active={lesson.order === currentLesson?.order}
-                        disabled={lesson.status === 'locked'}
-                        order={lesson.order}
+                        key={id}
+                        active={order === currentLesson?.order}
+                        order={order}
                         handleLessonClick={handleLessonClick}
-                        status={lesson.status}
-                        title={lesson.title}
+                        title={title}
+                        isLocked={status === 'locked'}
                       />
                     ))}
                   </div>
                 </div>
               </div>
 
-              <CourseDetails course={course} />
+              <CourseDetails
+                description={course.description}
+                tags={course.tags}
+                meta={course.meta}
+                launchDate={course.launchDate}
+                rating={course.rating}
+              />
             </>
           )}
         </div>

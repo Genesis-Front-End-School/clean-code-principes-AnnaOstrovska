@@ -4,27 +4,22 @@ export interface AllCourses {
 
 export type Course = Omit<CourseDTO, 'lessonsCount'>
 
-export interface CourseDTO {
+export interface CourseDTO extends Omit<VideoPreview, 'link'> {
   containsLockedLessons: boolean
   description: string
-  duration: number
   id: string
   launchDate: string
   lessonsCount: number
   lessons: Lesson[]
   meta: Meta
-  previewImageLink: string
   rating: number
   status: string
   tags: string[]
   title: string
 }
 
-export interface Meta {
+export interface Meta extends VideoPreview {
   courseVideoPreview: VideoPreview
-  duration: number
-  link: string
-  previewImageLink: string
   skills: string[]
   slug: string
 }
@@ -35,14 +30,11 @@ export interface VideoPreview {
   previewImageLink: string
 }
 
-export interface Lesson {
-  duration: number
+export interface Lesson extends VideoPreview {
   id: string
-  link: string
   meta: Meta | null
   order: number
-  previewImageLink: string
-  status: string
+  status: 'locked' | 'unlocked'
   title: string
   type: string
 }

@@ -6,14 +6,14 @@ import { SkillsSection } from '../../../../ui-shared/skillsSection/SkillsSection
 import { TabButton } from './tabButton/TabButton'
 import { ICourseDetailsProps } from '../../models'
 
-export const CourseDetails = ({ course }: ICourseDetailsProps) => {
+export const CourseDetails = ({ description, launchDate, rating, tags, meta }: ICourseDetailsProps) => {
   const navigate = useNavigate()
   const { hash } = useLocation()
   const [currentTab, setCurrentTab] = useState(hash || '#description')
   const isDescriptionTab = currentTab === '#description'
   const isDetailsTab = currentTab === '#details'
   const isTagsTab = currentTab === '#tags'
-  const date = new Date(course.launchDate)
+  const date = new Date(launchDate)
 
   const handleTabChange = (e: React.MouseEvent) => {
     const id = (e.target as HTMLButtonElement).id
@@ -46,10 +46,10 @@ export const CourseDetails = ({ course }: ICourseDetailsProps) => {
 
       {isDescriptionTab && (
         <div className="tab">
-          <p>{course.description}</p>
-          {course.meta.skills && (
+          <p>{description}</p>
+          {meta?.skills && (
             <div className="skills">
-              <SkillsSection skills={course.meta.skills} />
+              <SkillsSection skills={meta.skills} />
             </div>
           )}
         </div>
@@ -63,14 +63,14 @@ export const CourseDetails = ({ course }: ICourseDetailsProps) => {
           </div>
           <div className="block">
             <h4>Rating: </h4>
-            <p>{course.rating}</p>
+            <p>{rating}</p>
           </div>
         </div>
       )}
 
       {isTagsTab && (
         <div className="tab">
-          <p>{course.tags.join(', ').toUpperCase()}</p>
+          <p>{tags.join(', ').toUpperCase()}</p>
         </div>
       )}
     </div>

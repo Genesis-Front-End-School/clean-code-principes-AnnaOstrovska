@@ -7,15 +7,10 @@ export interface ITabButtonProps {
   handleClick: (e: React.MouseEvent) => void
 }
 
-export interface ICourseDetailsProps {
-  course: Course
-}
+export type ICourseDetailsProps = Pick<Course, 'description' | 'launchDate' | 'rating' | 'tags' | 'meta'>
 
-export interface ILessonProps {
+export type ILessonProps = Pick<Lesson, 'order' | 'title'> & {
   active: boolean
-  disabled: boolean
-  order: Lesson['order']
-  status: Lesson['status']
-  title: Lesson['title']
-  handleLessonClick: (order: number) => void
+  isLocked: boolean
+  handleLessonClick: (order: Lesson['order']) => void
 }

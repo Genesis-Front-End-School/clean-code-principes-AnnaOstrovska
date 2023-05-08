@@ -32,19 +32,19 @@ export const CoursesList = () => {
       {!isLoading && (
         <div className="listWrapper">
           {paginatedCoursesList?.length &&
-            paginatedCoursesList.map(course => (
+            paginatedCoursesList.map(({ id, title, previewImageLink, lessonsCount, meta, rating }) => (
               <CourseSection
-                key={course.id}
-                id={course.id}
-                title={course.title}
-                previewImageLink={course.previewImageLink}
-                lessonsCount={course.lessonsCount}
-                skills={course.meta.skills}
-                videoSrc={course.meta.courseVideoPreview?.link}
-                rating={course.rating}
+                key={id}
+                id={id}
+                title={title}
+                previewImageLink={previewImageLink}
+                lessonsCount={lessonsCount}
+                skills={meta.skills}
+                videoSrc={meta.courseVideoPreview?.link}
+                rating={rating}
               />
             ))}
-            
+
           <ReactPaginate
             containerClassName="pagination"
             breakLabel="..."

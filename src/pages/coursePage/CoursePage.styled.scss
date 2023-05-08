@@ -60,7 +60,7 @@
           box-shadow: 0 12px 48px rgba(255, 194, 122, 0.26);
         }
 
-        &.disabled {
+        &.isLocked {
           background-color: transparent;
 
           &:hover {
