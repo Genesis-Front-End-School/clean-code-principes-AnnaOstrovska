@@ -47,7 +47,7 @@ export const CourseDetails = ({ description, launchDate, rating, tags, meta }: I
       {isDescriptionTab && (
         <div className="tab">
           <p>{description}</p>
-          {meta.skills && (
+          {meta?.skills && (
             <div className="skills">
               <SkillsSection skills={meta.skills} />
             </div>
