@@ -2,7 +2,7 @@
 
 .container {
   @include themify($themes) {
-    background: themed('colorHeader');
+    background: themed('brightGradient');
   }
 
   position: sticky;

@@ -11,7 +11,7 @@
   text-decoration: none;
 
   @include themify($themes) {
-    background: themed('colorHeader');
+    background: themed('brightGradient');
     color: themed('brightInverted');
   }
 
