@@ -1,0 +1,42 @@
+$themes: (
+    light: (colorHeader: linear-gradient(180deg, #edeefe 0%, #d7d8f7 100%),
+        brightInverted: #2a31bf,
+        pale: #d0d2f1,
+        neutral: #fafaff,
+        bright: #eff2f7,
+        borderLoader: 2px solid #2a31bf,
+    ),
+    dark: (colorHeader: linear-gradient(180deg, #545BE8 0%, #272DB0 100%),
+        brightInverted: #eff2f7,
+        pale: #646bec,
+        neutral: #545be8,
+        bright: #2a31bf,
+        borderLoader: 2px solid #fff,
+    ),
+);
+
+@mixin themify($themes) {
+
+    @each $theme,
+    $map in $themes {
+        .theme-#{$theme} & {
+            $theme-map: () !global;
+
+            @each $key,
+            $submap in $map {
+                $value: map-get(map-get($themes, $theme), '#{$key}'
+                );
+                $theme-map: map-merge($theme-map,
+                    ($key: $value,
+                    )) !global;
+            }
+
+            @content;
+            $theme-map: null !global;
+        }
+    }
+}
+
+@function themed($key) {
+    @return map-get($theme-map, $key);
+}

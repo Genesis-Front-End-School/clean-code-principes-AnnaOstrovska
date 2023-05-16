@@ -25,7 +25,7 @@ describe('Course Section component', () => {
     expect(screen.getByText(props.title)).toBeInTheDocument()
     expect(screen.getByText(`Lessons: ${props.lessonsCount}`)).toBeInTheDocument()
     expect(screen.getByText(`Rating: ${props.rating}`)).toBeInTheDocument()
-    expect(screen.getByAltText('star')).toBeInTheDocument()
+    expect(screen.getByTestId('star')).toBeInTheDocument()
     expect(screen.getByAltText('Test Course')).toBeInTheDocument()
     expect(screen.getByText(props.skills[0])).toBeInTheDocument()
     expect(screen.getByText(props.skills[1])).toBeInTheDocument()
