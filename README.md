@@ -36,3 +36,23 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+## My project is divided into the following layers:
+
+- ### View
+
+- ### Application
+
+- ### Api
+
+### The view layer is divided into:
+ 
+- ### Presentation: This layer accepts data and throws events. It does not have access to the API (Header, Loader, Spinner, CourseDetails, CourseLesson, CoursesListPage, CourseSection, SkillsSection)
+
+- ### Structural: This layer is responsible for the structure (App, Layout)
+
+- ### Container: This layer communicates with the Application layer (CoursePage, CoursesList)
+
+### The Аpplication layer contains hooks and communicates with the API layer (useUpdateVideoMeta, useCurrentLesson, usePreviewCourse, usePreviewCourses, useToken)
+
+### The API layer contains requests to the server, API providers and communicates with the Domain (fetchPreviewCourse, fetchPreviewCourses, fetchToken, ApiProvider, AuthProvider)
