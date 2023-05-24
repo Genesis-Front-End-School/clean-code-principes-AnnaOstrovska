@@ -8,6 +8,7 @@ export const CourseLesson = ({ active, isLocked, order, title, handleLessonClick
         className={classNames('lessonSection', { active, isLocked })}
         key={order}
         onClick={() => handleLessonClick(order)}
+        data-testid="course-lesson"
     >
         {isLocked && <img src={lock} alt="lock" />}
         <h3>{`${order}. ${title}`}</h3>

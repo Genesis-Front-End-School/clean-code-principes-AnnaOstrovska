@@ -41,7 +41,7 @@ export const CoursePage = () => {
 
               <div className="lessonsWrapper">
                 <div className="videoWrapper">
-                  <video ref={videoRef} id={currentLesson?.link} src={currentLesson?.link} controls />
+                  <video ref={videoRef} id={currentLesson?.link} src={currentLesson?.link} controls data-testid="course-video" />
                   <h4 className='subtitle'>{`${currentLesson?.order}. ${currentLesson?.title}`}</h4>
                 </div>
 
@@ -65,7 +65,7 @@ export const CoursePage = () => {
               <CourseDetails
                 description={course.description}
                 tags={course.tags}
-                meta={course.meta}
+                skills={course.meta?.skills}
                 launchDate={course.launchDate}
                 rating={course.rating}
               />
