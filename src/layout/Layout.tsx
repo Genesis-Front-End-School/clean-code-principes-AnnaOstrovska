@@ -1,8 +1,12 @@
-import { PropsWithChildren } from 'react'
+import { ReactNode } from 'react'
 
 import { Header } from './header/Header'
 
-export const Layout = ({ children }: PropsWithChildren<{}>) => (
+interface Props {
+  children: ReactNode
+}
+
+export const Layout = ({ children }: Props) => (
   <>
     <Header />
     {children}

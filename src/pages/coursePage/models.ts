@@ -1,4 +1,4 @@
-import { Course, Lesson } from '../../types/courses/courses'
+import { Course, Lesson, Meta } from '../../types/courses/courses'
 
 export interface ITabButtonProps {
   text: string
@@ -7,15 +7,10 @@ export interface ITabButtonProps {
   handleClick: (e: React.MouseEvent) => void
 }
 
-export interface ICourseDetailsProps {
-  course: Course
-}
+export type ICourseDetailsProps = Pick<Course, 'description' | 'launchDate' | 'rating' | 'tags'> & Pick<Meta, 'skills'>
 
-export interface ILessonProps {
+export type ILessonProps = Pick<Lesson, 'order' | 'title'> & {
   active: boolean
-  disabled: boolean
-  order: Lesson['order']
-  status: Lesson['status']
-  title: Lesson['title']
-  handleLessonClick: (order: number) => void
+  isLocked: boolean
+  handleLessonClick: (order: Lesson['order']) => void
 }
