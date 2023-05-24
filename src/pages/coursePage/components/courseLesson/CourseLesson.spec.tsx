@@ -39,7 +39,7 @@ describe('Course Lesson component', () => {
         expect(courseLesson).not.toHaveClass('active')
         expect(courseLesson).toHaveClass('isLocked')
 
-        const lockIcon = screen.getByAltText('lock')
+        const lockIcon = screen.getByTestId('lock')
         expect(lockIcon).toBeInTheDocument()
     })
 

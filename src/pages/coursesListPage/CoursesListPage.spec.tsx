@@ -42,8 +42,8 @@ describe('CoursesListPage', () => {
         expect(homeImage).toBeInTheDocument()
         expect(homeImage).toHaveAttribute('src', 'HomeImage.png')
 
-        const arrowDownIcon = screen.getByAltText('arrowDown')
+        const arrowDownIcon = screen.getByTestId('arrowDown')
         expect(arrowDownIcon).toBeInTheDocument()
-        expect(arrowDownIcon).toHaveAttribute('src', 'ArrowDown.svg')
+        expect(arrowDownIcon).toHaveClass('arrowDown')
     })
 })
