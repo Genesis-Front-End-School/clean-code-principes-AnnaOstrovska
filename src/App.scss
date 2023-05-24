@@ -1,0 +1,26 @@
+@import './providers/styles/ThemeVariables.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+.app,
+.theme-light,
+.theme-dark {
+  min-height: 100vh;
+  height: 100%;
+}
+
+body {
+  font-family: 'Sora', sans-serif;
+  user-select: none;
+}
+
+.app {
+  @include themify($themes) {
+    background-color: themed('neutral');
+  }
+}
