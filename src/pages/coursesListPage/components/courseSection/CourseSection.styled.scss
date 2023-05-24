@@ -1,3 +1,5 @@
+@import '../../../../providers/styles/ThemeVariables.scss';
+
 .course {
   display: flex;
   gap: 40px;
@@ -6,8 +8,12 @@
   border-radius: 24px;
   box-shadow: rgba(0, 0, 0, 0.16) 0 3px 6px, rgba(0, 0, 0, 0.23) 0 3px 6px;
   color: #3e4a5e;
-  background-color: #fff;
   text-decoration: none;
+
+  @include themify($themes) {
+    background: themed('brightGradient');
+    color: themed('brightInverted');
+  }
 
   &:hover {
     box-shadow: rgba(0, 0, 0, 0.3) 0 19px 38px, rgba(0, 0, 0, 0.22) 0 15px 12px;
@@ -65,8 +71,12 @@
   gap: 8px;
   margin-top: 8px;
   padding: 0 14px;
-  background-color: #2a31bf;
-  color: white;
+
+  @include themify($themes) {
+    background: themed('brightInverted');
+    color: themed('bright');
+  }
+
   border-radius: 18px;
   font-size: 18px;
 
@@ -78,6 +88,12 @@
       margin-left: 6px;
       height: 24px;
       width: 24px;
+
+      path {
+        @include themify($themes) {
+          stroke: themed('bright');
+        }
+      }
     }
   }
 }

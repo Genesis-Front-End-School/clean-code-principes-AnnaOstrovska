@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import './CourseSection.styled.scss'
 
 import { RoutesManager } from '../../../../routesManager'
-import Star from '../../../../ui-base/svg/Star.svg'
+import { Star } from '../../../../ui-base/svg/Star'
 import { SkillsSection } from '../../../../ui-shared/skillsSection/SkillsSection'
 import { ICourseSectionProps } from '../models'
 import { attachHlsMedia } from '../../../../utils/attachHlsMedia'
@@ -50,7 +50,7 @@ export const CourseSection = ({
         <div className="footer">
           <div className="rating">
             <p className='ratingTitle'>Rating: {rating}</p>
-            <img className='star' src={Star} alt="star" />
+            <Star />
           </div>
           <p>Lessons: {lessonsCount}</p>
         </div>

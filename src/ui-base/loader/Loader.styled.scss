@@ -1,14 +1,20 @@
+@import '../../providers/styles/ThemeVariables.scss';
+
 .loaderWrapper {
   display: flex;
   width: 100%;
   justify-content: center;
-  height: 100%;
+  height: 100vh;
   align-items: center;
 
   .loader {
     width: 70px;
     height: 15px;
-    border: 2px solid #fff;
+
+    @include themify($themes) {
+      border: themed('borderLoader');
+    }
+
     border-radius: 50%;
     display: inline-block;
     position: relative;
@@ -42,6 +48,7 @@
       0% {
         transform: rotate(0deg);
       }
+
       100% {
         transform: rotate(360deg);
       }

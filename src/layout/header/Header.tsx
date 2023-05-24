@@ -3,6 +3,7 @@ import classNames from 'classnames';
 
 import { RoutesManager } from '../../routesManager'
 import { Logo } from '../../ui-base/logo/Logo'
+import { ThemeToggleButton } from '../../ui-base/themeToggleButton/ThemeToggleButton';
 
 import './Header.styled.scss'
 
@@ -17,16 +18,19 @@ export const Header = () => {
   return (
     <header className="container">
       <Logo />
-      
-      <div className="buttonsWrapper">
-        <button
-          className={classNames({
-            'active': pathname === '/home',
-          })}
-          onClick={handleClick}
-        >
-          Home
-        </button>
+
+      <div className="contentWrapper">
+        <div className="buttonsWrapper">
+          <button
+            className={classNames({
+              'active': pathname === '/home',
+            })}
+            onClick={handleClick}
+          >
+            Home
+          </button>
+        </div>
+        <ThemeToggleButton />
       </div>
     </header>
   )

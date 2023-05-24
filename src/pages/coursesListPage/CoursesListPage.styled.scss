@@ -1,7 +1,12 @@
+@import '../../providers/styles/ThemeVariables.scss';
+
 .pageWrapper {
   margin: 0 100px;
   user-select: none;
-  color: white;
+
+  @include themify($themes) {
+    color: themed('brightInverted');
+  }
 
   .topWrapper {
     margin-top: 80px;
@@ -41,5 +46,11 @@
     align-items: center;
     font-size: 44px;
     padding-top: 80px;
+
+    .arrowDown path {
+      @include themify($themes) {
+        stroke: themed('brightInverted');
+      }
+    }
   }
 }

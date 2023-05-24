@@ -2,7 +2,7 @@ import './CoursesListPage.styled.scss'
 
 import { CoursesList } from './components/coursesList/CoursesList'
 import homeImage from '../../ui-base/images/HomeImage.png'
-import arrowDown from '../../ui-base/svg/ArrowDown.svg'
+import { ArrowDown } from '../../ui-base/svg/ArrowDown'
 
 export default function CoursesListPage() {
   return (
@@ -23,7 +23,7 @@ export default function CoursesListPage() {
 
       <div className="coursesWrapper">
         <h3>
-          Preview our most popular courses <img src={arrowDown} alt="arrowDown" />
+          Preview our most popular courses <ArrowDown />
         </h3>
         <CoursesList />
       </div>
