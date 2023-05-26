@@ -1,12 +1,12 @@
 import { useRef, useEffect } from 'react'
 import HoverVideoPlayer from 'react-hover-video-player'
 import { Link } from 'react-router-dom'
+import { SkillsSection } from 'wisey-components-library'
 
 import './CourseSection.styled.scss'
 
 import { RoutesManager } from '../../../../routesManager'
 import { Star } from '../../../../ui-base/svg/Star'
-import { SkillsSection } from '../../../../ui-shared/skillsSection/SkillsSection'
 import { ICourseSectionProps } from '../models'
 import { attachHlsMedia } from '../../../../utils/attachHlsMedia'
 

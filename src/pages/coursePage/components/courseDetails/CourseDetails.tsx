@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { SkillsSection } from 'wisey-components-library'
 
 import './CourseDetails.styled.scss'
-import { SkillsSection } from '../../../../ui-shared/skillsSection/SkillsSection'
 import { TabButton } from './tabButton/TabButton'
 import { ICourseDetailsProps } from '../../models'
 
