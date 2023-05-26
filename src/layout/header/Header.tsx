@@ -1,9 +1,10 @@
 import { useLocation, useNavigate } from 'react-router-dom'
-import classNames from 'classnames';
+import classNames from 'classnames'
+import { Logo } from 'wisey-components-library'
+import 'wisey-components-library/dist/style.css'
 
 import { RoutesManager } from '../../routesManager'
-import { Logo } from '../../ui-base/logo/Logo'
-import { ThemeToggleButton } from '../../ui-base/themeToggleButton/ThemeToggleButton';
+import { ThemeToggleButton } from '../../ui-base/themeToggleButton/ThemeToggleButton'
 
 import './Header.styled.scss'
 

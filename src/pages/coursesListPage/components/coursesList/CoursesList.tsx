@@ -1,10 +1,10 @@
 import { useState, useMemo } from 'react'
 import ReactPaginate from 'react-paginate'
+import { Spinner } from 'wisey-components-library'
 
 import './CoursesList.styled.scss'
 
 import { usePreviewCourses } from '../../../../api/courses/queries/usePreviewCourses'
-import { Spinner } from '../../../../ui-base/spinner/Spinner'
 import { CourseSection } from '../courseSection/CourseSection'
 
 export const CoursesList = () => {
@@ -24,7 +24,7 @@ export const CoursesList = () => {
   return (
     <>
       {isLoading && (
-        <div className="coursesSpinner">
+        <div className="coursesSpinner" data-testid="spinner">
           <Spinner />
         </div>
       )}
